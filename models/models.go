@@ -1,30 +1,31 @@
 package models
 
-type PlayWithOptions struct {
-	PlayWith int
+// ResponseMessage : A struct for handling responses sent back to the user.
+type ResponseMessage struct {
+	Message string
 }
 
-type PlayerInputOptions struct {
-	PlayerInput int
+// PlayerInputStruct : A struct for handling the user input for the JSON request.
+type PlayerInputStruct struct {
+	UserInput int
 }
 
-type TwoPlayerGame struct {
-	PlayerOne int
-	PlayerTwo int
+// TwoPlayerGameStruct : A struct for handling both user input for the JSON request.
+type TwoPlayerGameStruct struct {
+	UserInputOne int
+	UserInputTwo int
 }
 
-type ResponseOutput struct {
+// GameOutputComputer : A struct for handling the JSON request for the game output between the player and computer.
+type GameOutputComputer struct {
 	PlayerPick   string
 	ComputerPick string
 	Winner       string
 }
 
-type ResponseOutputTwoPlayerGame struct {
+// GameOutputTwoPlayer : A struct for handling the JSON request for the game output between two players.
+type GameOutputTwoPlayer struct {
 	PlayerOnePick string
 	PlayerTwoPick string
 	Winner        string
-}
-
-type Message struct {
-	Message string
 }
