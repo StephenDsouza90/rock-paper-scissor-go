@@ -91,7 +91,7 @@ Users can select between playing with another player or with a computer. The rou
 ```bash
 >> curl -X POST "http://127.0.0.1:8080/select-player-or-computer" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"UserInput\": 1}"
 
->>curl -X POST "http://127.0.0.1:8080/select-player-or-computer" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"UserInput\": 2}"
+>> curl -X POST "http://127.0.0.1:8080/select-player-or-computer" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"UserInput\": 2}"
 ```
 
 ## Dependencies
