@@ -1,2 +1,2 @@
-# rock-paper-scissor-go
-This is a rock, paper, scissor game written in Golang.
+WIP: TO BE DONE:
+go get github.com/gorilla/mux
