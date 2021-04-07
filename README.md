@@ -100,9 +100,17 @@ Users can select between playing with another player or with a computer. The rou
 go get github.com/gorilla/mux
 ```
 
-## Next Steps
+## Testing
 
-TBD
+The tests are in the `main_test.go` file and can be executed with the following command:
 
-1. Count scores
-2. Build front-end
+```
+>> go test -v
+
+=== RUN   TestGetPlayerSelection
+--- PASS: TestGetPlayerSelection (0.00s)
+=== RUN   TestPlayGame
+--- PASS: TestPlayGame (0.00s)
+PASS
+ok      github.com/StephenDsouza90/RockPaperScissor     0.195s
+```
