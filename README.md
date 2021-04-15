@@ -118,5 +118,19 @@ ok      github.com/StephenDsouza90/RockPaperScissor     0.195s
 ## Initialized module
 
 ```bash
-go mod init
+>> go mod init
+```
+
+## Docker
+
+To build the Docker image, run the following command:
+
+```bash
+>> docker build -t rock-paper-scissor .
+```
+
+To run the Docker image, run the following command:
+
+```bash
+>> docker run -it --rm -p 8080:8080 rock-paper-scissor
 ```
