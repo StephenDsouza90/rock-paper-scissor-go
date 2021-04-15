@@ -114,3 +114,9 @@ The tests are in the `main_test.go` file and can be executed with the following 
 PASS
 ok      github.com/StephenDsouza90/RockPaperScissor     0.195s
 ```
+
+## Initialized module
+
+```bash
+go mod init
+```
