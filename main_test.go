@@ -8,21 +8,21 @@ import (
 
 func TestGetPlayerSelection(t *testing.T) {
 	// Rock
-	playerPickRock := core.GetPlayerSelection(1)
+	playerPickRock := core.GetPlayerSelection(0)
 	if playerPickRock != "Rock" {
-		t.Error("Player picked 1 which is supposed to be Rock")
+		t.Error("Player picked 0 which is supposed to be Rock")
 	}
 
 	// Paper
-	playerPickPaper := core.GetPlayerSelection(2)
+	playerPickPaper := core.GetPlayerSelection(1)
 	if playerPickPaper != "Paper" {
-		t.Error("Player picked 2 which is supposed to be Paper")
+		t.Error("Player picked 1 which is supposed to be Paper")
 	}
 
 	// Scissor
-	playerPickScissor := core.GetPlayerSelection(3)
+	playerPickScissor := core.GetPlayerSelection(2)
 	if playerPickScissor != "Scissor" {
-		t.Error("Player picked 3 which is supposed to be Scissor")
+		t.Error("Player picked 2 which is supposed to be Scissor")
 	}
 }
 
