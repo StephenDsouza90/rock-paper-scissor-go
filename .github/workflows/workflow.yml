@@ -1,7 +1,5 @@
-name: Workflow
-
 on: [push, pull_request]
-
+name: Workflow
 jobs:
   build:
     strategy:
