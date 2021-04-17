@@ -127,9 +127,9 @@ To initialize the module, run the following command:
 
 ## Docker
 
-Dockerfile contains a multi-stage build process to reduce the size of the final image.
+Dockerfile contains a multi-stage build process to reduce the size of the image.
 
-The first base images uses `golang:alpine` and the app is added and complied within this image. A second image `alpine:latest` is used and the artifacts from the first image is added to the second image. Everything from the first image is left behind and only the second image is used. This reduces the size of the final image and keeps the Dockerfile maintainable.
+In the first stage of the multi build, the Go program is compiled and a Binary is produce. All the dependencies and the main program are compiled to a single Binary file that can be executed. In the second stage, the Binary is copied to the new image. This will reduce the size of the final image because it will contain the Binary.
 
 To build the Docker image, run the following command:
 
