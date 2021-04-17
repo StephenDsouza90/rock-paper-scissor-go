@@ -12,9 +12,11 @@ jobs:
       uses: actions/setup-go@v2
       with:
         go-version: ${{ matrix.go-version }}
-    - name: Checkout code
+    - name: Checkout repository
       uses: actions/checkout@v2
-    - name: Install modules
-      run: go get github.com/gorilla/mux
-    - name: Test
+    - name: Install all dependencies
+      run: go get
+    - name: Run lint
+      run: golint .
+    - name: Run Test
       run: go test -v ./...
