@@ -11,15 +11,15 @@ jobs:
       runs-on: ${{ matrix.os }}
 
       steps:
+        # Checks-out repository
+        - name: Check-out repository
+          uses: actions/checkout@v2
+
         # Setup Go
         - name: Setup Go
           uses: actions/setup-go@v2
           with:
             go-version: ${{ matrix.go-version }}
-
-        # Checks-out repository
-        - name: Check-out repository
-          uses: actions/checkout@v2
 
         # Install all the dependencies
         - name: Install dependencies
