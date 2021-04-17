@@ -6,15 +6,9 @@ This app is a Rock, Paper, Scissor game which is written in Golang and has a RES
 
 The options of the game are:
 
-* Number 1 is mapped to Rock
-* Number 2 is mapped to Paper
-* Number 3 is mapped to Scissor
-
-The `init()` initializes the game options. In Golang, if there is an `init()` then that function is called as soon as the app is executed.
-
-For instance: The entry point to the app is `main()`, however, if there is an `init()` then upon executing the app `>> go run main.go` the `init()` will be called first and then the `main()`.
-
-More info can be found here: https://stackoverflow.com/questions/20508356/non-declaration-statement-outside-function-body-in-go
+* Number 0 is mapped to Rock
+* Number 1 is mapped to Paper
+* Number 2 is mapped to Scissor
 
 ## Game Rules
 
@@ -32,6 +26,12 @@ Rest API: Mux Routers
 Running on: http://127.0.0.1:8080/
 ```
 
+The `init()` initializes the game options. In Golang, if there is an `init()` then that function is called as soon as the app is executed.
+
+For instance: The entry point to the app is `main()`, however, if there is an `init()` then upon executing the app `>> go run main.go` the `init()` will be called first and then the `main()`.
+
+More info can be found here: https://stackoverflow.com/questions/20508356/non-declaration-statement-outside-function-body-in-go
+
 ## REST API Routes
 
 The routes are created with the `gorilla/mux` package. The routes are placed in the `handleRequests()` function in `main.go`.
@@ -42,11 +42,11 @@ The route to play with the computer is `/start-game-with-computer` and is mapped
 
 
 ```bash
+>> curl -X POST "http://127.0.0.1:8080/start-game-with-computer" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"UserInput\": 0}"
+
 >> curl -X POST "http://127.0.0.1:8080/start-game-with-computer" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"UserInput\": 1}"
 
 >> curl -X POST "http://127.0.0.1:8080/start-game-with-computer" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"UserInput\": 2}"
-
->> curl -X POST "http://127.0.0.1:8080/start-game-with-computer" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"UserInput\": 3}"
 
 ```
 
@@ -65,9 +65,9 @@ The output of the game is as follows:
 The route to play with another player is `/start-game-with-player` and is mapped to the `startGameWithPlayer()`. Both players can input their options in the data flag `-d` in the curl command.
 
 ```bash
->> curl -X POST "http://127.0.0.1:8080/start-game-with-player" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"UserInputOne\": 1, \"UserInputTwo\": 2}"
+>> curl -X POST "http://127.0.0.1:8080/start-game-with-player" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"UserInputOne\": 0, \"UserInputTwo\": 1}"
 
->> curl -X POST "http://127.0.0.1:8080/start-game-with-player" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"UserInputOne\": 3, \"UserInputTwo\": 2}"
+>> curl -X POST "http://127.0.0.1:8080/start-game-with-player" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"UserInputOne\": 2, \"UserInputTwo\": 1}"
 
 ```
 
@@ -96,8 +96,10 @@ Users can select between playing with another player or with a computer. The rou
 
 ## Dependencies
 
+The dependencies of the app are in the `go.mod` file. It can also be installed via the following command.
+
 ```bash
-go get github.com/gorilla/mux
+>> go get github.com/gorilla/mux
 ```
 
 ## Testing
@@ -117,11 +119,17 @@ ok      github.com/StephenDsouza90/RockPaperScissor     0.195s
 
 ## Initialized module
 
+To initialize the module, run the following command:
+
 ```bash
 >> go mod init
 ```
 
 ## Docker
+
+Dockerfile contains a multi-stage build process to reduce the size of the final image.
+
+The first base images uses `golang:alpine` and the app is added and complied within this image. A second image `alpine:latest` is used and the artifacts from the first image is added to the second image. Everything from the first image is left behind and only the second image is used. This reduces the size of the final image and keeps the Dockerfile maintainable.
 
 To build the Docker image, run the following command:
 

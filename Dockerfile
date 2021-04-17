@@ -1,17 +1,21 @@
 # Base image
-FROM golang:1.15.0-alpine
+FROM golang:alpine AS Builder
 
-# Create directory
+# Create and add files into /app directory
 RUN mkdir /app
-
-# Add files from root directory into /app
+WORKDIR /app
 ADD . /app
 
-# Set /app as working directory
+# Compile binary
+RUN go build -o main .
+
+# New base image
+FROM alpine:latest
+
 WORKDIR /app
 
-# Compile the binary
-RUN go build -o main .
+# Add artifacts from previous image to new image
+COPY --from=Builder /app/main .
 
 # Expose application port
 EXPOSE 8080
