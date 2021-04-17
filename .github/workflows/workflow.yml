@@ -10,27 +10,27 @@ jobs:
         os: [macos-latest,  macos-latest]
       runs-on: ${{ matrix.os }}
 
-    steps:
-      # Setup Go
-      - name: Setup Go
-        uses: actions/setup-go@v2
-        with:
-          go-version: ${{ matrix.go-version }}
+      steps:
+        # Setup Go
+        - name: Setup Go
+          uses: actions/setup-go@v2
+          with:
+            go-version: ${{ matrix.go-version }}
 
-      # Checks-out repository
-      - name: Check-out repository
-        uses: actions/checkout@v2
+        # Checks-out repository
+        - name: Check-out repository
+          uses: actions/checkout@v2
 
-      # Install all the dependencies
-      - name: Install dependencies
-        run: |
-          go get github.com/gorilla/mux
-          go get -u golang.org/x/lint/golint
+        # Install all the dependencies
+        - name: Install dependencies
+          run: |
+            go get github.com/gorilla/mux
+            go get -u golang.org/x/lint/golint
 
-      # Run lint on the code
-      - name: Run lint
-        run: golint .
+        # Run lint on the code
+        - name: Run lint
+          run: golint .
 
-      # Run testing on the code
-      - name: Test
-        run: go test -v ./...
+        # Run testing on the code
+        - name: Test
+          run: go test -v ./...
