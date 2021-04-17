@@ -1,28 +1,24 @@
 on: [push, pull_request]
 name: Workflow
 jobs:
-  test:
+  workflow:
     strategy:
       matrix:
         go-version: [1.15.x, 1.16.x]
         os: [macos-latest,  macos-latest]
       runs-on: ${{ matrix.os }}
-
       steps:
-        - uses: actions/checkout@v2
-
-        - name: Setup Go
-          uses: actions/setup-go@v2
-          with:
-            go-version: ${{ matrix.go-version }}
-
-        - name: Install dependencies
-          run: |
-            go get github.com/gorilla/mux
-            go get -u golang.org/x/lint/golint
-
-        - name: Run lint
-          run: golint .
-
-        - name: Test
-          run: go test -v ./...
+      - name: Install Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: ${{ matrix.go-version }}
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Install dependencies
+        run: |
+          go get github.com/gorilla/mux
+          go get -u golang.org/x/lint/golint
+      - name: Run lint
+        run: golint .
+      - name: Test
+        run: go test -v ./...
