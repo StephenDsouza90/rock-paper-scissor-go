@@ -18,9 +18,9 @@ func init() {
 	// The game options are global so that a player or computer has the same source for selecting options.
 
 	core.GameOptions = make(map[int]string)
-	core.GameOptions[1] = "Rock"
-	core.GameOptions[2] = "Paper"
-	core.GameOptions[3] = "Scissor"
+	core.GameOptions[0] = "Rock"
+	core.GameOptions[1] = "Paper"
+	core.GameOptions[2] = "Scissor"
 }
 
 func selectPlayerOrComputer(writer http.ResponseWriter, request *http.Request) {

@@ -7,9 +7,9 @@ var GameOptions map[int]string
 func PlayGame(firstPlayerPick, secondPlayerPick string) string {
 	// In case of playing with computer then secondPlayerPick is the computer.
 
-	rock := GameOptions[1]
-	paper := GameOptions[2]
-	scissor := GameOptions[3]
+	rock := GameOptions[0]
+	paper := GameOptions[1]
+	scissor := GameOptions[2]
 
 	var winner string
 
