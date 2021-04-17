@@ -11,25 +11,20 @@ jobs:
       runs-on: ${{ matrix.os }}
 
       steps:
-        # Checks-out repository
           uses: actions/checkout@v2
 
-        # Setup Go
         - name: Setup Go
           uses: actions/setup-go@v2
           with:
             go-version: ${{ matrix.go-version }}
 
-        # Install all the dependencies
         - name: Install dependencies
           run: |
             go get github.com/gorilla/mux
             go get -u golang.org/x/lint/golint
 
-        # Run lint on the code
         - name: Run lint
           run: golint .
 
-        # Run testing on the code
         - name: Test
           run: go test -v ./...
